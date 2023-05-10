@@ -1,22 +1,30 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:cloudproject/app/app.dart';
-import 'package:cloudproject/app/tabs/home/details/details.dart';
+import 'dart:ui' show PointerDeviceKind;
+import 'package:flutter_japanese_restaurant_app/src/view/screen/home_screen.dart';
+import 'package:flutter_japanese_restaurant_app/src/controller/food_controller.dart';
 
-void main() => runApp(MyApp());
+final FoodController controller = Get.put(FoodController());
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: "Cera Pro",
-        primaryColor: Color(0xFFE85852),
-      ),
-      routes: {
-        'details': (context) => Details(),
-      },
-      home: App(),
-    );
+    return Obx(() {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        scrollBehavior: const MaterialScrollBehavior().copyWith(
+          dragDevices: {
+            PointerDeviceKind.mouse,
+            PointerDeviceKind.touch,
+          },
+        ),
+        theme: controller.theme.value,
+        home: HomeScreen(),
+      );
+    });
   }
 }
