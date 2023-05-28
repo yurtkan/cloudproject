@@ -39,6 +39,7 @@ dependencies:
   badges: ^3.0.2
   animations: ^2.0.7
   simple_animations: ^5.0.0+3
+  flutter_gif: any
 
 dev_dependencies:
   flutter_test:
