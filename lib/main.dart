@@ -1,3 +1,4 @@
+import 'package:flutter_japanese_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' show PointerDeviceKind;
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           },
         ),
         theme: controller.theme.value,
-        home: LoginScreen(),
+        home: HomeScreen(),
       );
     });
   }

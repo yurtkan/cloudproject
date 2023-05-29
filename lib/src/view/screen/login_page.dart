@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gif/flutter_gif.dart';
+import 'package:flutter_japanese_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
 
 import 'home_screen.dart';
@@ -27,28 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // appBar: AppBar(
-      //   systemOverlayStyle: const SystemUiOverlayStyle(
-      //     statusBarIconBrightness: Brightness.light,
-      //     statusBarColor: Colors.transparent,
-      //   ),
-      //   centerTitle: true,
-      //   title: Title(
-      //     color: Colors.white,
-      //     child: const Image(
-      //       image: AssetImage('assets/images/icegif-379.gif'),
-      //       height: 150,
-      //     ),
-      //     // child: const Text('Login',
-      //     //     textAlign: TextAlign.center,
-      //     //     style: TextStyle(
-      //     //       color: Colors.black,
-      //     //       fontSize: 40,
-      //     //     )),
-      //   ),
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      // ),
       body: SingleChildScrollView(
         child: Align(
           alignment: Alignment.topCenter,
@@ -75,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             child: Padding(
               padding: const EdgeInsets.only(
-                top: 50.0,
+                top: 20.0,
                 left: 20.0,
                 right: 20.0,
               ),
@@ -84,18 +63,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const Text('Login',
+                  const Text('Nyan Cat \n Asian House',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 40,
                       )),
+                  const SizedBox(
+                    height: 40,
+                  ),
                   const Image(
                     image: AssetImage('assets/images/icegif-379.gif'),
                     height: 150,
                   ),
                   const SizedBox(
-                    height: 100,
+                    height: 50,
                   ),
                   TextFormField(
                     keyboardType: TextInputType.text,
@@ -181,6 +163,42 @@ class _LoginScreenState extends State<LoginScreen> {
                         Get.to(HomeScreen());
                       },
                       child: const Text('Login'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                    child: Text(
+                      "Don't have an account?",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 252, 252, 252),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 45,
+                    width: 150,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor:
+                            const Color.fromARGB(255, 101, 101, 101),
+                        backgroundColor:
+                            const Color.fromARGB(255, 239, 239, 239),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40),
+                            bottomLeft: Radius.circular(40),
+                            bottomRight: Radius.circular(40),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Get.to(const SignUpScreen());
+                      },
+                      child: const Text('Sign Up'),
                     ),
                   ),
                 ],
