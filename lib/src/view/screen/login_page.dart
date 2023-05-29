@@ -1,5 +1,3 @@
-import 'dart:js_util';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gif/flutter_gif.dart';
@@ -29,84 +27,95 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.light,
-          statusBarColor: Colors.transparent,
-        ),
-        centerTitle: true,
-        title: Title(
-          color: Colors.white,
-          child: const Text('Login',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 40,
-              )),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   systemOverlayStyle: const SystemUiOverlayStyle(
+      //     statusBarIconBrightness: Brightness.light,
+      //     statusBarColor: Colors.transparent,
+      //   ),
+      //   centerTitle: true,
+      //   title: Title(
+      //     color: Colors.white,
+      //     child: const Image(
+      //       image: AssetImage('assets/images/icegif-379.gif'),
+      //       height: 150,
+      //     ),
+      //     // child: const Text('Login',
+      //     //     textAlign: TextAlign.center,
+      //     //     style: TextStyle(
+      //     //       color: Colors.black,
+      //     //       fontSize: 40,
+      //     //     )),
+      //   ),
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      // ),
       body: Stack(
         children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height * 0.50,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/plane-bg.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          // Container(
+          //   height: MediaQuery.of(context).size.height * 0.50,
+          //   width: double.infinity,
+          //   decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //       image: AssetImage('assets/images/plane-bg.jpg'),
+          //       fit: BoxFit.cover,
+          //     ),
+          //   ),
+          // ),
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.topCenter,
             child: Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.55,
+              //height: MediaQuery.of(context).size.height * 0.55,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+                  //end: Alignment.bottomRight,
                   colors: [
-                    Color.fromARGB(255, 230, 118, 14),
-                    Color.fromARGB(255, 236, 125, 20),
-                    Color.fromARGB(255, 226, 133, 11),
-                    Color.fromARGB(255, 224, 155, 27),
-                    Color.fromARGB(255, 228, 133, 8),
-                    Color.fromARGB(255, 231, 127, 7),
+                    Color.fromARGB(255, 112, 5, 126),
+                    Color.fromARGB(255, 152, 25, 226),
+                    Color.fromARGB(255, 205, 21, 230),
+                    Color.fromARGB(255, 184, 35, 221),
+                    Color.fromARGB(255, 160, 29, 221),
+                    Color.fromARGB(255, 211, 27, 218),
                   ],
                 ),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
-                ),
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(40),
+                //   topRight: Radius.circular(40),
+                // ),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(
+                  top: 50.0,
                   left: 20.0,
                   right: 20.0,
                 ),
                 child: Column(
                   children: <Widget>[
                     const SizedBox(
-                      height: 20,
+                      height: 40,
                     ),
+                    const Text('Login',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 40,
+                        )),
                     const Image(
                       image: AssetImage('assets/images/icegif-379.gif'),
-                      height: 80,
+                      height: 150,
                     ),
                     const SizedBox(
                       height: 100,
                     ),
                     TextFormField(
                       keyboardType: TextInputType.text,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.purple),
                       decoration: const InputDecoration(
-                        labelText: "Student Mail",
-                        labelStyle: TextStyle(color: Colors.white),
+                        labelText: "Mail",
+                        labelStyle: TextStyle(color: Colors.purple),
                         prefixIcon: Icon(Icons.mail),
-                        prefixIconColor: Colors.white,
+                        prefixIconColor: Colors.purple,
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.white,
@@ -125,12 +134,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFormField(
                       keyboardType: TextInputType.text,
                       obscureText: !_passwordVisible,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.purple),
                       decoration: InputDecoration(
                         labelText: "Password",
-                        labelStyle: const TextStyle(color: Colors.white),
+                        labelStyle: const TextStyle(color: Colors.purple),
                         prefixIcon: const Icon(Icons.key),
-                        prefixIconColor: Colors.white,
+                        prefixIconColor: Colors.purple,
                         suffixIcon: IconButton(
                           icon: Icon(
                             // Based on passwordVisible state choose the icon
@@ -173,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(40),
-                              //topRight: Radius.circular(20),
+                              topRight: Radius.circular(40),
                               bottomLeft: Radius.circular(40),
                               bottomRight: Radius.circular(40),
                             ),
