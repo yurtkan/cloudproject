@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_japanese_restaurant_app/src/view/widget/fade_animation.dart';
+import 'package:cloudproject_restaurant_app/src/view/widget/fade_animation.dart';
 
 extension IterableWithIndex<T> on Iterable<T> {
   Iterable<E> mapWithIndex<E>(E Function(int index, T value) f) {
@@ -9,7 +9,7 @@ extension IterableWithIndex<T> on Iterable<T> {
   Iterable<T> distinctBy(Object Function(T e) getCompareValue) {
     var result = <T>[];
     forEach(
-          (element) {
+      (element) {
         if (!result
             .any((x) => getCompareValue(x) == getCompareValue(element))) {
           result.add(element);
