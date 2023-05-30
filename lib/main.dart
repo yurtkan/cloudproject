@@ -1,11 +1,8 @@
-import 'package:flutter_japanese_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' show PointerDeviceKind;
 import 'package:flutter_japanese_restaurant_app/src/view/screen/home_screen.dart';
 import 'package:flutter_japanese_restaurant_app/src/controller/food_controller.dart';
-
-import 'src/view/screen/login_page.dart';
 
 final FoodController controller = Get.put(FoodController());
 
