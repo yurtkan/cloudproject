@@ -1,52 +1,26 @@
 import 'package:cloudproject_restaurant_app/src/view/screen/food_list_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
 
 import 'home_screen.dart';
 
-bool _passwordVisible = false;
+final _cityController = TextEditingController();
+final _townController = TextEditingController();
+final _addressController = TextEditingController();
 
 @override
-final _mailController = TextEditingController();
-final _passwordController = TextEditingController();
-void initState() {
-  _passwordVisible = false;
-  // moveFiles();
-  // super.initState();
-}
+void initState() {}
 
-class UserInfo {
-  String mailInfo = '';
-  String nameInfo = '';
-
-  String getMail() {
-    return mailInfo;
-  }
-
-  String getName() {
-    return nameInfo;
-  }
-
-  void setMail(String mail) {
-    mailInfo = mail;
-  }
-
-  void setName(String name) {
-    nameInfo = name;
-  }
-}
-
-UserInfo user = UserInfo();
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class CheckoutScreen extends StatefulWidget {
+  const CheckoutScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<CheckoutScreen> createState() => _CheckoutScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,12 +36,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 begin: Alignment.topLeft,
                 //end: Alignment.bottomRight,
                 colors: [
-                  Color.fromARGB(255, 112, 5, 126),
-                  Color.fromARGB(255, 152, 25, 226),
-                  Color.fromARGB(255, 205, 21, 230),
-                  Color.fromARGB(255, 184, 35, 221),
-                  Color.fromARGB(255, 160, 29, 221),
-                  Color.fromARGB(255, 211, 27, 218),
+                  Color.fromARGB(255, 244, 236, 245),
+                  Color.fromARGB(255, 188, 178, 194),
+                  Color.fromARGB(255, 200, 171, 204),
+                  Color.fromARGB(255, 215, 187, 223),
+                  Color.fromARGB(255, 207, 181, 219),
+                  Color.fromARGB(255, 220, 199, 221),
                 ],
               ),
               // borderRadius: BorderRadius.only(
@@ -86,37 +60,36 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const Text('Nyan Cat \n Asian House',
-                      textAlign: TextAlign.center,
+                  const Text('Where should we bring your order?',
+                      textAlign: TextAlign.left,
                       style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 40,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 30,
                       )),
                   const SizedBox(
                     height: 40,
                   ),
                   const Image(
-                    image: AssetImage('assets/images/icegif-379.gif'),
+                    image: AssetImage('assets/images/Kawaii Cats In Box.gif'),
                     height: 150,
                   ),
                   const SizedBox(
                     height: 50,
                   ),
                   TextFormField(
-                    controller: _mailController,
+                    controller: _cityController,
                     onChanged: (text) {
                       setState(() {
-                        _mailController.text;
+                        _cityController.text;
                       });
-                      user.setMail(_mailController.text.toString());
                     },
                     keyboardType: TextInputType.text,
                     style: const TextStyle(color: Colors.purple),
                     decoration: const InputDecoration(
-                      labelText: "Mail",
+                      labelText: "City",
                       labelStyle: TextStyle(color: Colors.purple),
-                      prefixIcon: Icon(Icons.mail),
-                      prefixIconColor: Colors.purple,
+                      // prefixIcon: Icon(Icons.home_filled),
+                      // prefixIconColor: Colors.purple,
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
@@ -133,41 +106,50 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 10,
                   ),
                   TextFormField(
+                    controller: _townController,
                     onChanged: (text) {
                       setState(() {
-                        _passwordController.text;
+                        _cityController.text;
                       });
                     },
-                    controller: _passwordController,
                     keyboardType: TextInputType.text,
-                    obscureText: !_passwordVisible,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      labelText: "Password",
-                      labelStyle: const TextStyle(color: Colors.white),
-                      prefixIcon: const Icon(Icons.key),
-                      prefixIconColor: Colors.white,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          // Based on passwordVisible state choose the icon
-                          _passwordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.white,
+                    style: const TextStyle(color: Colors.purple),
+                    decoration: const InputDecoration(
+                      labelText: "Town",
+                      labelStyle: TextStyle(color: Colors.purple),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.purple,
                         ),
-                        onPressed: () {
-                          // Update the state i.e. toogle the state of passwordVisible variable
-                          setState(() {
-                            _passwordVisible = !_passwordVisible;
-                          });
-                        },
                       ),
-                      enabledBorder: const UnderlineInputBorder(
+                      focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
                         ),
                       ),
-                      focusedBorder: const UnderlineInputBorder(
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: _addressController,
+                    onChanged: (text) {
+                      setState(() {
+                        _addressController.text;
+                      });
+                    },
+                    keyboardType: TextInputType.text,
+                    style: const TextStyle(color: Colors.purple),
+                    decoration: const InputDecoration(
+                      labelText: "Address",
+                      labelStyle: TextStyle(color: Colors.purple),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.purple,
+                        ),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
                         ),
@@ -196,15 +178,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () {
-                        if (_mailController.text.isEmpty &&
-                            _passwordController.text.isNotEmpty) {
-                          //mail field is empty
+                        if (_cityController.text.isEmpty) {
+                          //city field is empty
                           showDialog(
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text(
-                                    "Mail cannot be empty",
+                                    "City info cannot be empty",
                                     style: TextStyle(color: Colors.deepPurple),
                                   ),
                                   backgroundColor: Colors.white,
@@ -221,15 +202,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ],
                                 );
                               });
-                        } else if (_passwordController.text.isEmpty &&
-                            _mailController.text.isNotEmpty) {
+                        } else if (_townController.text.isEmpty) {
                           //pswrd is empty
                           showDialog(
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text(
-                                    "Password cannot be empty",
+                                    "Town info cannot be empty",
                                     style: TextStyle(color: Colors.deepPurple),
                                   ),
                                   backgroundColor: Colors.white,
@@ -246,14 +226,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ],
                                 );
                               });
-                        } else if (_mailController.text.isEmpty &&
-                            _passwordController.text.isEmpty) {
+                        } else if (_addressController.text.isEmpty) {
                           showDialog(
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text(
-                                    "Mail and password info is required",
+                                    "Address info cannot be empty",
                                     style: TextStyle(color: Colors.deepPurple),
                                   ),
                                   backgroundColor: Colors.white,
@@ -276,46 +255,35 @@ class _LoginScreenState extends State<LoginScreen> {
                         // }
                         else {
                           //everything is ok
-                          Get.to(HomeScreen());
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    "Your order is confirmed!",
+                                    style: TextStyle(color: Colors.purple),
+                                  ),
+                                  content: const Text(
+                                    "We sent you a confirmation e-mail.",
+                                    style: TextStyle(color: Colors.purple),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text(
+                                        "Okay",
+                                        style: TextStyle(color: Colors.purple),
+                                      ),
+                                      onPressed: () {
+                                        Get.to(HomeScreen());
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
                         }
                       },
-                      child: const Text('Login'),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                    child: Text(
-                      "Don't have an account?",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 252, 252, 252),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 45,
-                    width: 150,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor:
-                            const Color.fromARGB(255, 101, 101, 101),
-                        backgroundColor:
-                            const Color.fromARGB(255, 239, 239, 239),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                            topRight: Radius.circular(40),
-                            bottomLeft: Radius.circular(40),
-                            bottomRight: Radius.circular(40),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        Get.to(const SignUpScreen());
-                      },
-                      child: const Text('Sign Up'),
+                      child: const Text('Order'),
                     ),
                   ),
                 ],

@@ -8,8 +8,10 @@ import 'package:cloudproject_restaurant_app/core/app_extension.dart';
 import 'package:cloudproject_restaurant_app/src/model/food_category.dart';
 import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
 import 'package:cloudproject_restaurant_app/src/view/widget/food_list_view.dart';
+import 'package:cloudproject_restaurant_app/src/view/screen/login_page.dart';
 
 final FoodController controller = Get.put(FoodController());
+final mailInfo = user.getMail();
 
 class FoodListScreen extends StatelessWidget {
   const FoodListScreen({Key? key}) : super(key: key);
@@ -44,18 +46,18 @@ class FoodListScreen extends StatelessWidget {
     );
   }
 
-  Widget _searchBar() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-      child: TextField(
-        decoration: InputDecoration(
-          hintText: 'Search food',
-          prefixIcon: Icon(Icons.search, color: Colors.grey),
-          contentPadding: EdgeInsets.all(20),
-        ),
-      ),
-    );
-  }
+  // Widget _searchBar() {
+  //   return const Padding(
+  //     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+  //     child: TextField(
+  //       decoration: InputDecoration(
+  //         hintText: 'Search food',
+  //         prefixIcon: Icon(Icons.search, color: Colors.grey),
+  //         contentPadding: EdgeInsets.all(20),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,91 +70,96 @@ class FoodListScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Morning, Sina",
+                "Welcome! $mailInfo",
                 style: Theme.of(context).textTheme.headlineSmall,
               ).fadeAnimation(0.2),
               Text(
-                "What do you want to eat \ntoday",
+                "What do you want to eat \ntoday?",
                 style: Theme.of(context).textTheme.displayLarge,
               ).fadeAnimation(0.4),
-              _searchBar(),
-              Text(
-                "Available for you",
-                style: Theme.of(context).textTheme.displaySmall,
-              ),
+              //_searchBar(),
+              // Text(
+              //   "\nAvailable for you",
+              //   style: Theme.of(context).textTheme.displaySmall,
+              // ),
               Padding(
-                padding: const EdgeInsets.only(top: 15),
+                padding: const EdgeInsets.only(top: 20),
                 child: SizedBox(
-                  height: 40,
+                  height: 500,
                   child: GetBuilder(
                     builder: (FoodController controller) {
-                      return ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: AppData.categories.length,
-                        itemBuilder: (_, index) {
-                          FoodCategory category = AppData.categories[index];
-                          return GestureDetector(
-                            onTap: () {
-                              controller.filterItemByCategory(category);
-                            },
-                            child: Container(
-                              width: 100,
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: category.isSelected
-                                    ? LightThemeColor.accent
-                                    : Colors.transparent,
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                              ),
-                              child: Text(
-                                category.type.name.toCapital,
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
-                              ),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (_, __) {
-                          return const Padding(
-                            padding: EdgeInsets.only(right: 15),
-                          );
-                        },
-                      );
+                      return FoodListView(foods: controller.filteredFoods);
                     },
                   ),
+                  // GetBuilder(
+                  //   builder: (FoodController controller) {
+                  //     return ListView.separated(
+                  //       scrollDirection: Axis.horizontal,
+                  //       itemCount: AppData.categories.length,
+                  //       itemBuilder: (_, index) {
+                  //         FoodCategory category = AppData.categories[index];
+                  //         return GestureDetector(
+                  //           onTap: () {
+                  //             controller.filterItemByCategory(category);
+                  //           },
+                  //           child: Container(
+                  //             width: 100,
+                  //             alignment: Alignment.center,
+                  //             padding: const EdgeInsets.all(10),
+                  //             decoration: BoxDecoration(
+                  //               color: category.isSelected
+                  //                   ? LightThemeColor.accent
+                  //                   : Colors.transparent,
+                  //               borderRadius: const BorderRadius.all(
+                  //                 Radius.circular(15),
+                  //               ),
+                  //             ),
+                  //             child: Text(
+                  //               category.type.name.toCapital,
+                  //               style:
+                  //                   Theme.of(context).textTheme.headlineMedium,
+                  //             ),
+                  //           ),
+                  //         );
+                  //       },
+                  //       separatorBuilder: (_, __) {
+                  //         return const Padding(
+                  //           padding: EdgeInsets.only(right: 15),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  // ),
                 ),
               ),
-              GetBuilder(
-                builder: (FoodController controller) {
-                  return FoodListView(foods: controller.filteredFoods);
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 25, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Best food of the week",
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20),
-                      child: Text(
-                        "See all",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium
-                            ?.copyWith(color: LightThemeColor.accent),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              FoodListView(foods: AppData.foodItems, isReversedList: true),
+              // GetBuilder(
+              //   builder: (FoodController controller) {
+              //     return FoodListView(foods: controller.filteredFoods);
+              //   },
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 25, bottom: 5),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Text(
+              //         "Best food of the week",
+              //         style: Theme.of(context).textTheme.displaySmall,
+              //       ),
+              //       // Padding(
+              //       //   padding: const EdgeInsets.only(right: 20),
+              //       //   child: Text(
+              //       //     "See all",
+              //       //     style: Theme.of(context)
+              //       //         .textTheme
+              //       //         .headlineMedium
+              //       //         ?.copyWith(color: LightThemeColor.accent),
+              //       //   ),
+              //       // ),
+              //     ],
+              //   ),
+              // ),
+              //FoodListView(foods: AppData.foodItems, isReversedList: true),
             ],
           ),
         ),
