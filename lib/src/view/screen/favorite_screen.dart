@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_japanese_restaurant_app/core/app_icon.dart';
-import 'package:flutter_japanese_restaurant_app/core/app_color.dart';
-import 'package:flutter_japanese_restaurant_app/src/model/food.dart';
-import 'package:flutter_japanese_restaurant_app/core/app_extension.dart';
-import 'package:flutter_japanese_restaurant_app/src/view/widget/empty_widget.dart';
-import 'package:flutter_japanese_restaurant_app/src/controller/food_controller.dart';
+import 'package:cloudproject_restaurant_app/core/app_icon.dart';
+import 'package:cloudproject_restaurant_app/core/app_color.dart';
+import 'package:cloudproject_restaurant_app/src/model/food.dart';
+import 'package:cloudproject_restaurant_app/core/app_extension.dart';
+import 'package:cloudproject_restaurant_app/src/view/widget/empty_widget.dart';
+import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
 
 final FoodController controller = Get.put(FoodController());
 

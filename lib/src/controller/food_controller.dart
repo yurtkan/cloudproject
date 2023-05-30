@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_japanese_restaurant_app/core/app_data.dart';
-import 'package:flutter_japanese_restaurant_app/core/app_theme.dart';
-import 'package:flutter_japanese_restaurant_app/src/model/food.dart';
-import 'package:flutter_japanese_restaurant_app/core/app_extension.dart';
-import 'package:flutter_japanese_restaurant_app/src/model/food_category.dart';
+import 'package:cloudproject_restaurant_app/core/app_data.dart';
+import 'package:cloudproject_restaurant_app/core/app_theme.dart';
+import 'package:cloudproject_restaurant_app/src/model/food.dart';
+import 'package:cloudproject_restaurant_app/core/app_extension.dart';
+import 'package:cloudproject_restaurant_app/src/model/food_category.dart';
 
 class FoodController extends GetxController {
   RxInt currentBottomNavItemIndex = 0.obs;

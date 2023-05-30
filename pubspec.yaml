@@ -1,5 +1,5 @@
-name: flutter_japanese_restaurant_app
-description: Japanese restaurant app built in flutter using GetX | Bloc | Cubit | Provider
+name: cloudproject_restaurant_app
+description: Japanese restaurant app
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -39,7 +39,7 @@ dependencies:
   badges: ^3.0.2
   animations: ^2.0.7
   simple_animations: ^5.0.0+3
-  flutter_gif: any
+  #flutter_gif: any
 
 dev_dependencies:
   flutter_test:

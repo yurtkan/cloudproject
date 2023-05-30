@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gif/flutter_gif.dart';
-import 'package:flutter_japanese_restaurant_app/src/view/screen/sign_up.dart';
+//import 'package:flutter_gif/flutter_gif.dart';
+import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
 
 import 'home_screen.dart';
@@ -81,12 +81,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextFormField(
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: Colors.purple),
+                    style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
                       labelText: "Mail",
-                      labelStyle: TextStyle(color: Colors.purple),
+                      labelStyle: TextStyle(color: Colors.white),
                       prefixIcon: Icon(Icons.mail),
-                      prefixIconColor: Colors.purple,
+                      prefixIconColor: Colors.white,
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
@@ -105,12 +105,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     keyboardType: TextInputType.text,
                     obscureText: !_passwordVisible,
-                    style: const TextStyle(color: Colors.purple),
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: "Password",
-                      labelStyle: const TextStyle(color: Colors.purple),
+                      labelStyle: const TextStyle(color: Colors.white),
                       prefixIcon: const Icon(Icons.key),
-                      prefixIconColor: Colors.purple,
+                      prefixIconColor: Colors.white,
                       suffixIcon: IconButton(
                         icon: Icon(
                           // Based on passwordVisible state choose the icon
