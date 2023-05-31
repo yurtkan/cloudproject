@@ -25,8 +25,8 @@ class FoodListView extends StatelessWidget {
     return SizedBox(
       height: 200,
       child: ListView.separated(
-        padding: const EdgeInsets.only(top: 20, left: 10),
-        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        scrollDirection: Axis.vertical,
         itemCount: isReversedList ? 3 : foods.length,
         itemBuilder: (_, index) {
           Food food =
@@ -38,34 +38,61 @@ class FoodListView extends StatelessWidget {
                 CustomPageRoute(child: FoodDetailScreen(food: food)),
               );
             },
-            child: Container(
-              width: 160,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: controller.isLightTheme
-                    ? Colors.white
-                    : DarkThemeColor.primaryLight,
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-              ),
-              child: Padding(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                width: 160,
                 padding: const EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(food.image, scale: 6),
-                    Text(
-                      "\$${food.price}",
-                      style: h3Style.copyWith(color: LightThemeColor.accent),
-                    ),
-                    Text(
-                      food.name,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ).fadeAnimation(0.7),
+                decoration: BoxDecoration(
+                  color: controller.isLightTheme
+                      ? Colors.white
+                      : DarkThemeColor.primaryLight,
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset(food.image, scale: 6),
+                          // Text(
+                          //   "\$${food.price}",
+                          //   style:
+                          //       h3Style.copyWith(color: LightThemeColor.accent),
+                          // ),
+                          // Text(
+                          //   food.name,
+                          //   style: Theme.of(context)
+                          //       .textTheme
+                          //       .headlineMedium
+                          //       ?.copyWith(fontWeight: FontWeight.bold),
+                          // ),
+                        ],
+                      ).fadeAnimation(0.7),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Image.asset(food.image, scale: 6),
+                          Text(
+                            food.name,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "\$${food.price}",
+                            style:
+                                h3Style.copyWith(color: LightThemeColor.accent),
+                          ),
+                        ],
+                      ).fadeAnimation(0.7),
+                    ],
+                  ),
+                ),
               ),
             ),
           );

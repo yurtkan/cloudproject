@@ -48,7 +48,7 @@ class FavoriteScreen extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                trailing: const Icon(AppIcon.heart, color: Colors.redAccent),
+                trailing: const Icon(AppIcon.heart, color: Colors.purple),
               ),
             ).fadeAnimation(index * 0.6);
           },

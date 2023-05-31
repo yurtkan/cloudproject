@@ -6,6 +6,10 @@ import 'home_screen.dart';
 bool _passwordVisible = false;
 
 @override
+final _mailControllerSignUp = TextEditingController();
+final _nameControllerSignUp = TextEditingController();
+final _passwordControllerSignUp = TextEditingController();
+
 void initState() {
   _passwordVisible = false;
   // FlutterGifController controller= FlutterGifController(vsync: this);
@@ -78,6 +82,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 50,
                   ),
                   TextFormField(
+                    onChanged: (text) {
+                      setState(() {
+                        _nameControllerSignUp.text = text.toString();
+                      });
+                    },
+                    controller: _nameControllerSignUp,
                     keyboardType: TextInputType.text,
                     style: const TextStyle(color: Colors.purple),
                     decoration: const InputDecoration(
@@ -101,6 +111,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 10,
                   ),
                   TextFormField(
+                    onChanged: (text) {
+                      setState(() {
+                        _mailControllerSignUp.text = text.toString();
+                      });
+                    },
+                    controller: _mailControllerSignUp,
                     keyboardType: TextInputType.text,
                     style: const TextStyle(color: Colors.purple),
                     decoration: const InputDecoration(
@@ -124,6 +140,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 10,
                   ),
                   TextFormField(
+                    onChanged: (text) {
+                      setState(() {
+                        _passwordControllerSignUp.text = text.toString();
+                      });
+                    },
+                    controller: _passwordControllerSignUp,
                     keyboardType: TextInputType.text,
                     obscureText: !_passwordVisible,
                     style: const TextStyle(color: Colors.purple),
@@ -181,7 +203,86 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       onPressed: () {
-                        Get.to(HomeScreen());
+                        if (_mailControllerSignUp.text.isEmpty) {
+                          //mail field is empty
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    "Mail cannot be empty",
+                                    style: TextStyle(color: Colors.deepPurple),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text(
+                                        "Okay",
+                                        style: TextStyle(color: Colors.purple),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        } else if (_passwordControllerSignUp.text.isEmpty) {
+                          //pswrd is empty
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    "Password cannot be empty",
+                                    style: TextStyle(color: Colors.deepPurple),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text(
+                                        "Okay",
+                                        style: TextStyle(color: Colors.purple),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        } else if (_nameControllerSignUp.text.isEmpty) {
+                          //name is empty
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    "Name-Surname cannot be empty",
+                                    style: TextStyle(color: Colors.deepPurple),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text(
+                                        "Okay",
+                                        style: TextStyle(color: Colors.purple),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        }
+                        // else if(){
+                        //   //pswrd or mail is incorrect
+                        // }
+                        else {
+                          //everything is ok
+                          Get.to(HomeScreen());
+                        }
                       },
                       child: const Text('Sign Up'),
                     ),

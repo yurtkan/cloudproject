@@ -1,3 +1,4 @@
+import 'package:cloudproject_restaurant_app/src/view/screen/checkout_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -106,7 +107,9 @@ class CartScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: width * 0.1),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(const CheckoutScreen());
+                        },
                         child: const Text("Checkout"),
                       ),
                     ),
@@ -141,7 +144,7 @@ class CartScreen extends StatelessWidget {
                   vertical: 25,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.redAccent,
+                  color: Color.fromARGB(255, 241, 65, 247),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const FaIcon(FontAwesomeIcons.trash),
