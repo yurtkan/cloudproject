@@ -117,15 +117,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelStyle: TextStyle(color: Colors.purple),
                       prefixIcon: Icon(Icons.mail),
                       prefixIconColor: Colors.purple,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
                     ),
                   ),
@@ -141,19 +137,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _passwordController,
                     keyboardType: TextInputType.text,
                     obscureText: !_passwordVisible,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.purple),
                     decoration: InputDecoration(
                       labelText: "Password",
-                      labelStyle: const TextStyle(color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.purple),
                       prefixIcon: const Icon(Icons.key),
-                      prefixIconColor: Colors.white,
+                      prefixIconColor: Colors.purple,
                       suffixIcon: IconButton(
                         icon: Icon(
                           // Based on passwordVisible state choose the icon
                           _passwordVisible
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.white,
+                          color: Colors.purple,
                         ),
                         onPressed: () {
                           // Update the state i.e. toogle the state of passwordVisible variable
@@ -162,15 +158,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                       ),
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
                     ),
                   ),
