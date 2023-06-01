@@ -16,6 +16,7 @@ class CartScreen extends StatelessWidget {
 
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Text(
         "Cart screen",
         style: Theme.of(context).textTheme.displayMedium,

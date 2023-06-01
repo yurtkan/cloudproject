@@ -18,30 +18,21 @@ class FoodListScreen extends StatelessWidget {
 
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        icon: const FaIcon(FontAwesomeIcons.dice),
-        onPressed: controller.changeTheme,
-      ),
+      automaticallyImplyLeading: false,
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Icon(Icons.location_on_outlined, color: LightThemeColor.accent),
-          Text("Location", style: Theme.of(context).textTheme.bodyLarge)
+          Image.asset(height: 20, 'assets/images/ncatlittle.png'),
+          const SizedBox(width: 10),
+          Text("Nyan Cat Asian House",
+              style: Theme.of(context).textTheme.headlineSmall)
         ],
       ),
       actions: [
         IconButton(
-          onPressed: () {},
-          icon: Badge(
-            badgeStyle: const BadgeStyle(badgeColor: LightThemeColor.accent),
-            badgeContent: const Text(
-              "2",
-              style: TextStyle(color: Colors.white),
-            ),
-            position: BadgePosition.topStart(start: -3),
-            child: const Icon(Icons.notifications_none, size: 30),
-          ),
-        )
+          icon: const FaIcon(FontAwesomeIcons.moon),
+          onPressed: controller.changeTheme,
+        ),
       ],
     );
   }
