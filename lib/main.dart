@@ -24,12 +24,13 @@ void main() {
           },
         ),
         theme: controller.theme.value,
-        unknownRoute: GetPage(name: '/notfound', page: () => NotFoundScreen()),
+        unknownRoute:
+            GetPage(name: '/notfound', page: () => const NotFoundScreen()),
         initialRoute: '/login',
         getPages: [
           GetPage(
             name: '/login',
-            page: () => LoginScreen(),
+            page: () => const LoginScreen(),
           ),
           GetPage(
             name: '/home',

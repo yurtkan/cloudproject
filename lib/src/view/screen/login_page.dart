@@ -1,4 +1,4 @@
-import 'package:cloudproject_restaurant_app/src/view/screen/food_list_screen.dart';
+//import 'package:cloudproject_restaurant_app/src/view/screen/food_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';

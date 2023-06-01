@@ -4,7 +4,9 @@ import 'package:cloudproject_restaurant_app/core/app_asset.dart';
 import 'login_page.dart';
 
 final _nameEdit = TextEditingController();
+// ignore: unused_element
 final _mailEdit = TextEditingController();
+// ignore: unused_element
 final _passwordEdit = TextEditingController();
 
 class ProfileScreen extends StatefulWidget {
@@ -54,7 +56,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               prefixIconColor: Colors.purple,
                             ),
                           ),
-                          backgroundColor: Color.fromARGB(255, 240, 238, 238),
+                          backgroundColor:
+                              const Color.fromARGB(255, 240, 238, 238),
                           actions: <Widget>[
                             TextButton(
                               child: const Text(
@@ -77,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         );
                       });
-                  print('The container is tapped');
+                  //print('The container is tapped');
                   // Add other stuff
                 },
                 child: Container(
