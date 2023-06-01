@@ -29,12 +29,12 @@ class FoodDetailScreen extends StatelessWidget {
         onPressed: () => Navigator.pop(context),
         icon: const Icon(Icons.arrow_back),
       ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.more_vert),
-        )
-      ],
+      // actions: [
+      //   IconButton(
+      //     onPressed: () {},
+      //     icon: const Icon(Icons.more_vert),
+      //   )
+      // ],
     );
   }
 

@@ -16,6 +16,7 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Favorite screen",
           style: Theme.of(context).textTheme.displayMedium,

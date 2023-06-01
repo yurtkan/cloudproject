@@ -14,33 +14,37 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
-      GetMaterialApp(
-        title: 'Nyan Cat Asian House',
-        debugShowCheckedModeBanner: false,
-        scrollBehavior: const MaterialScrollBehavior().copyWith(
-          dragDevices: {
-            PointerDeviceKind.mouse,
-            PointerDeviceKind.touch,
-          },
-        ),
-        theme: controller.theme.value,
-        unknownRoute: GetPage(name: '/notfound', page: () => NotFoundScreen()),
-        initialRoute: '/login',
-        getPages: [
-          GetPage(
-            name: '/login',
-            page: () => LoginScreen(),
-          ),
-          GetPage(
-            name: '/home',
-            page: () => HomeScreen(),
-          ),
-        ],
+      Obx(
+        () {
+          return GetMaterialApp(
+            title: 'Nyan Cat Asian House',
+            debugShowCheckedModeBanner: false,
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.touch,
+              },
+            ),
+            theme: controller.theme.value,
+            unknownRoute:
+                GetPage(name: '/notfound', page: () => const NotFoundScreen()),
+            initialRoute: '/login',
+            getPages: [
+              GetPage(
+                name: '/login',
+                page: () => const LoginScreen(),
+              ),
+              GetPage(
+                name: '/home',
+                page: () => HomeScreen(),
+              ),
+            ],
+          );
+        },
       ),
     ),
   );
 }
-
 
 // void main() => runApp(const MyApp());
 

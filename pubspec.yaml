@@ -35,11 +35,12 @@ dependencies:
   flutter_lints: ^2.0.1
   flutter_rating_bar: ^4.0.1
   font_awesome_flutter: ^10.4.0
-  get: #^4.6.5
   badges: ^3.0.2
   animations: ^2.0.7
   simple_animations: ^5.0.0+3
-  #flutter_gif: any
+  http: ^1.0.0
+  shared_preferences: ^2.1.1
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

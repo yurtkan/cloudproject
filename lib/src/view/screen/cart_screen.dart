@@ -16,6 +16,7 @@ class CartScreen extends StatelessWidget {
 
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Text(
         "Cart screen",
         style: Theme.of(context).textTheme.displayMedium,
@@ -144,7 +145,7 @@ class CartScreen extends StatelessWidget {
                   vertical: 25,
                 ),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 241, 65, 247),
+                  color: const Color.fromARGB(255, 241, 65, 247),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const FaIcon(FontAwesomeIcons.trash),
