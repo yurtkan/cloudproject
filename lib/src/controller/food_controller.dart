@@ -4,13 +4,12 @@ import 'package:cloudproject_restaurant_app/core/app_data.dart';
 import 'package:cloudproject_restaurant_app/core/app_theme.dart';
 import 'package:cloudproject_restaurant_app/src/model/food.dart';
 import 'package:cloudproject_restaurant_app/core/app_extension.dart';
-import 'package:cloudproject_restaurant_app/src/model/food_category.dart';
 
 class FoodController extends GetxController {
   RxInt currentBottomNavItemIndex = 0.obs;
   RxList<Food> cartFood = <Food>[].obs;
   RxList<Food> favoriteFood = <Food>[].obs;
-  RxList<FoodCategory> categories = AppData.categories.obs;
+  // RxList<FoodCategory> categories = AppData.categories.obs;
   RxList<Food> filteredFoods = AppData.foodItems.obs;
   RxDouble totalPrice = 0.0.obs;
   RxDouble subtotalPrice = 0.0.obs;
@@ -62,23 +61,23 @@ class FoodController extends GetxController {
     }
   }
 
-  filterItemByCategory(FoodCategory category) {
-    for (var element in AppData.categories) {
-      element.isSelected = false;
-    }
-    category.isSelected = true;
+  // filterItemByCategory(FoodCategory category) {
+  //   // for (var element in AppData.categories) {
+  //   //   element.isSelected = false;
+  //   // }
+  //   category.isSelected = true;
 
-    if (category.type == FoodType.all) {
-      filteredFoods.assignAll(AppData.foodItems.obs);
-    } else {
-      filteredFoods.assignAll(AppData.foodItems.where((item) {
-        return item.type == category.type;
-      }).toList());
-    }
-    update();
+  //   if (category.type == FoodType.all) {
+  //     filteredFoods.assignAll(AppData.foodItems.obs);
+  //   } else {
+  //     filteredFoods.assignAll(AppData.foodItems.where((item) {
+  //       return item.type == category.type;
+  //     }).toList());
+  //   }
+  //   update();
 
-    filteredFoods.refresh();
-  }
+  //   filteredFoods.refresh();
+  // }
 
   isFavoriteFood(Food food) {
     food.isFavorite = !food.isFavorite;

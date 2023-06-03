@@ -58,18 +58,6 @@ class FoodListView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Image.asset(food.image, scale: 6),
-                          // Text(
-                          //   "\$${food.price}",
-                          //   style:
-                          //       h3Style.copyWith(color: LightThemeColor.accent),
-                          // ),
-                          // Text(
-                          //   food.name,
-                          //   style: Theme.of(context)
-                          //       .textTheme
-                          //       .headlineMedium
-                          //       ?.copyWith(fontWeight: FontWeight.bold),
-                          // ),
                         ],
                       ).fadeAnimation(0.7),
                       Column(
