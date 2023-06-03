@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:cloudproject_restaurant_app/core/app_asset.dart';
+import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
+import 'package:get/get.dart';
+import 'package:cloudproject_restaurant_app/core/app_color.dart';
+import '../../controller/food_controller.dart';
 
-import 'login_page.dart';
+final FoodController controller = Get.put(FoodController());
 
-final _nameEdit = TextEditingController();
-final _mailEdit = TextEditingController();
-final _passwordEdit = TextEditingController();
-final name = user.nameInfo;
+@override
+void initState() {}
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -19,90 +20,99 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(30),
-            child: Image.asset(AppAsset.profileImage, width: 50),
-          ),
-          Text(
-            "Hello!",
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(
+        title: Text(
+          "Profile",
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+      ),
+      // ignore: sized_box_for_whitespace
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
+        child: const Padding(
+          padding: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          content: TextFormField(
-                            controller: _nameEdit,
-                            onChanged: (text) {
-                              setState(() {
-                                _nameEdit.text;
-                              });
-                              user.setName(_nameEdit.text.toString());
-                            },
-                            keyboardType: TextInputType.text,
-                            style: const TextStyle(color: Colors.purple),
-                            decoration: const InputDecoration(
-                              labelText: "Enter your name and surname",
-                              labelStyle: TextStyle(color: Colors.purple),
-                              prefixIconColor: Colors.purple,
-                            ),
-                          ),
-                          backgroundColor: Color.fromARGB(255, 240, 238, 238),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text(
-                                "Cancel",
-                                style: TextStyle(color: Colors.purple),
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                            TextButton(
-                              child: const Text(
-                                "Okay",
-                                style: TextStyle(color: Colors.purple),
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            )
-                          ],
-                        );
-                      });
-                  print('The container is tapped');
-                  // Add other stuff
-                },
-                child: Container(
-                  height: 30.0,
-                  width: 200.0,
-                  //alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 224, 178, 194),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: const Text(
-                    "name and surname",
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  table_button(
+                    tableName: "1",
                   ),
-                ),
-
-                // color: Colors.purple,
-                // child: const Text(
-                //     /* "$nameInfo"*/
-                //     "name info"),
-              )
+                  table_button(
+                    tableName: "2",
+                  ),
+                  table_button(
+                    tableName: "3",
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  table_button(
+                    tableName: "4",
+                  ),
+                  table_button(
+                    tableName: "5",
+                  ),
+                  table_button(
+                    tableName: "6",
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  table_button(
+                    tableName: "7",
+                  ),
+                  table_button(
+                    tableName: "8",
+                  ),
+                  table_button(
+                    tableName: "9",
+                  ),
+                ],
+              ),
             ],
-          )
-        ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ignore: camel_case_types
+class table_button extends StatelessWidget {
+  final String tableName;
+  const table_button({
+    super.key,
+    required this.tableName,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      width: 80,
+      decoration: const BoxDecoration(
+        color: Colors.green,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.all(16.0),
+        ),
+        onPressed: null, //rezervasyon yapılacak
+        child: Text(
+          tableName,
+          style: const TextStyle(color: Colors.white),
+        ),
       ),
     );
   }
