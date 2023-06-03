@@ -4,7 +4,6 @@ import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloudproject_restaurant_app/src/controller/login_controller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 bool _passwordVisible = false;
 
@@ -21,7 +20,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final LoginController controller = Get.put(LoginController());
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();

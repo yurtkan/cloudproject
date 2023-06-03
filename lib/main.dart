@@ -6,12 +6,21 @@ import 'package:flutter/services.dart';
 import 'dart:ui' show PointerDeviceKind;
 import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
 import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final FoodController controller = Get.put(FoodController());
-
-void main() {
-  //runApp(const MyApp());
+void main() async {
+  String sroute;
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? token = prefs.getString('token');
+
+  if (token == null) {
+    sroute = '/login';
+  } else {
+    sroute = '/home';
+  }
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
       Obx(
@@ -30,7 +39,7 @@ void main() {
               name: '/notfound',
               page: () => const NotFoundScreen(),
             ),
-            initialRoute: '/login',
+            initialRoute: sroute, //'/login',
             getPages: [
               GetPage(
                 name: '/login',
@@ -47,6 +56,7 @@ void main() {
     ),
   );
 }
+
 
 // void main() => runApp(const MyApp());
 
