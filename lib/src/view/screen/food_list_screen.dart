@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 //import 'package:badges/badges.dart';
 import 'package:flutter/material.dart' hide Badge;
@@ -5,13 +7,34 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloudproject_restaurant_app/core/app_extension.dart';
 import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
 import 'package:cloudproject_restaurant_app/src/view/widget/food_list_view.dart';
-import 'package:cloudproject_restaurant_app/src/view/screen/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final FoodController controller = Get.put(FoodController());
-final mailInfo = user.getMail();
 
-class FoodListScreen extends StatelessWidget {
+class FoodListScreen extends StatefulWidget {
   const FoodListScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FoodListScreen> createState() => _FoodListScreenState();
+}
+
+class _FoodListScreenState extends State<FoodListScreen> {
+  late String _uname;
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserName();
+  }
+
+  _getUserName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('uname') != null) {
+      _uname = prefs.getString('uname')!;
+    } else {
+      _uname = "Guest";
+    }
+  }
 
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
@@ -36,19 +59,6 @@ class FoodListScreen extends StatelessWidget {
     );
   }
 
-  // Widget _searchBar() {
-  //   return const Padding(
-  //     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-  //     child: TextField(
-  //       decoration: InputDecoration(
-  //         hintText: 'Search food',
-  //         prefixIcon: Icon(Icons.search, color: Colors.grey),
-  //         contentPadding: EdgeInsets.all(20),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,18 +70,13 @@ class FoodListScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Welcome! $mailInfo",
+                "Welcome $_uname,",
                 style: Theme.of(context).textTheme.headlineSmall,
               ).fadeAnimation(0.2),
               Text(
                 "What do you want to eat \ntoday?",
                 style: Theme.of(context).textTheme.displayLarge,
               ).fadeAnimation(0.4),
-              //_searchBar(),
-              // Text(
-              //   "\nAvailable for you",
-              //   style: Theme.of(context).textTheme.displaySmall,
-              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: SizedBox(

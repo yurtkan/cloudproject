@@ -20,7 +20,7 @@ void main() async {
   } else {
     sroute = '/home';
   }
-
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
       Obx(
