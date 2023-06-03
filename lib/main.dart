@@ -1,4 +1,4 @@
-import 'package:cloudproject_restaurant_app/src/view/screen/login_page.dart';
+import 'package:cloudproject_restaurant_app/src/view/screen/login_screen.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/notfound_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
