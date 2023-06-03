@@ -18,7 +18,7 @@ class CartScreen extends StatelessWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       title: Text(
-        "Cart screen",
+        "Cart",
         style: Theme.of(context).textTheme.displayMedium,
       ),
     );
