@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloudproject_restaurant_app/src/controller/login_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 bool _passwordVisible = false;
 
@@ -19,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final LoginController controller = Get.put(LoginController());
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -29,9 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                ),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -204,11 +205,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 if (_formKey.currentState!.validate()) {
                                   controller.loginAPI();
                                 } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content:
-                                            Text('Please fill all the fields')),
-                                  );
+                                  Get.snackbar('Please fill all the fields',
+                                      'Email and Pasword are required',
+                                      colorText: Colors.white,
+                                      backgroundColor: Colors.red);
                                 }
                               },
                               child: const Text('Login'),
@@ -242,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               onPressed: () {
-                                //Get.to(const SignUpScreen());
+                                Get.to(() => const SignUpScreen());
                               },
                               child: const Text('Sign Up'),
                             ),
