@@ -1,3 +1,4 @@
+import 'package:cloudproject_restaurant_app/src/view/screen/reservation_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudproject_restaurant_app/core/app_data.dart';
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
   final List<Widget> screen = [
     const FoodListScreen(),
     const CartScreen(),
+    const ReservationScreen(),
     const FavoriteScreen(),
     const ProfileScreen()
   ];

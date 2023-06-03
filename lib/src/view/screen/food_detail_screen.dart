@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloudproject_restaurant_app/core/app_icon.dart';
 import 'package:cloudproject_restaurant_app/core/app_color.dart';
 import 'package:cloudproject_restaurant_app/src/model/food.dart';
@@ -81,36 +79,6 @@ class FoodDetailScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        RatingBar.builder(
-                          itemPadding: EdgeInsets.zero,
-                          itemSize: 20,
-                          initialRating: food.score,
-                          minRating: 1,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          glow: false,
-                          ignoreGestures: true,
-                          itemBuilder: (_, __) => const FaIcon(
-                            FontAwesomeIcons.solidStar,
-                            color: LightThemeColor.yellow,
-                          ),
-                          onRatingUpdate: (rating) {},
-                        ),
-                        const SizedBox(width: 15),
-                        Text(
-                          food.score.toString(),
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(width: 5),
-                        Text(
-                          "(${food.voter})",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        )
-                      ],
-                    ).fadeAnimation(0.4),
                     const SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -66,12 +66,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const Text('Where should we bring your order?',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontSize: 30,
-                      )),
+                  // const Text('Where should we bring your order?',
+                  //     textAlign: TextAlign.left,
+                  //     style: TextStyle(
+                  //       color: Color.fromARGB(255, 0, 0, 0),
+                  //       fontSize: 30,
+                  //     )),
                   const SizedBox(
                     height: 40,
                   ),

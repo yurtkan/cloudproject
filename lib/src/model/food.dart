@@ -7,9 +7,6 @@ class Food {
   int quantity;
   bool isFavorite;
   String description;
-  double score;
-  FoodType type;
-  int voter;
 
   Food(
     this.image,
@@ -18,8 +15,5 @@ class Food {
     this.quantity,
     this.isFavorite,
     this.description,
-    this.score,
-    this.type,
-    this.voter,
   );
 }

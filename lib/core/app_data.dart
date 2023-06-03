@@ -2,22 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloudproject_restaurant_app/core/app_icon.dart';
 import 'package:cloudproject_restaurant_app/core/app_asset.dart';
 import 'package:cloudproject_restaurant_app/src/model/food.dart';
-import 'package:cloudproject_restaurant_app/src/model/food_category.dart';
 import 'package:cloudproject_restaurant_app/src/model/bottom_navigation_item.dart';
 
 class AppData {
   const AppData._();
 
-  static const dummyText =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting "
-      "industry. Lorem Ipsum has been the industry's standard dummy text ever "
-      "since the 1500s, when an unknown printer took a galley of type and "
-      "scrambled it to make a type specimen book. It has survived not only five "
-      "centuries, but also the leap into electronic typesetting, remaining "
-      "essentially unchanged. It was popularised in the 1960s with the release "
-      "of Letraset sheets containing Lorem Ipsum passages, and more recently "
-      "with desktop publishing software like Aldus PageMaker including versions "
-      "of Lorem Ipsum.";
+  static const dummyText = "mama";
 
   static List<Food> foodItems = [
     Food(
@@ -27,9 +17,6 @@ class AppData {
       1,
       false,
       dummyText,
-      5.0,
-      FoodType.desert,
-      150,
     ),
     Food(
       AppAsset.sushi2,
@@ -38,9 +25,6 @@ class AppData {
       1,
       false,
       dummyText,
-      3.5,
-      FoodType.desert,
-      652,
     ),
     Food(
       AppAsset.sushi3,
@@ -49,9 +33,6 @@ class AppData {
       1,
       false,
       dummyText,
-      4.0,
-      FoodType.desert,
-      723,
     ),
     Food(
       AppAsset.sushi4,
@@ -60,9 +41,6 @@ class AppData {
       1,
       false,
       dummyText,
-      2.5,
-      FoodType.main,
-      456,
     ),
     Food(
       AppAsset.sushi5,
@@ -71,9 +49,6 @@ class AppData {
       1,
       false,
       dummyText,
-      4.5,
-      FoodType.main,
-      650,
     ),
     Food(
       AppAsset.sushi6,
@@ -82,9 +57,6 @@ class AppData {
       1,
       false,
       dummyText,
-      1.5,
-      FoodType.main,
-      350,
     ),
     Food(
       AppAsset.sushi7,
@@ -93,9 +65,6 @@ class AppData {
       1,
       false,
       dummyText,
-      3.5,
-      FoodType.main,
-      265,
     ),
     Food(
       AppAsset.sushi8,
@@ -104,9 +73,6 @@ class AppData {
       1,
       false,
       dummyText,
-      4.0,
-      FoodType.main,
-      890,
     ),
     // Food(
     //   AppAsset.sushi9,
@@ -167,6 +133,11 @@ class AppData {
       'Shopping cart',
     ),
     BottomNavigationItem(
+      const Icon(Icons.table_restaurant_outlined),
+      const Icon(Icons.table_restaurant_rounded),
+      'Reservation',
+    ),
+    BottomNavigationItem(
       const Icon(AppIcon.outlinedHeart),
       const Icon(AppIcon.heart),
       'Favorite',
@@ -176,14 +147,5 @@ class AppData {
       const Icon(Icons.person),
       'Profile',
     )
-  ];
-
-  static List<FoodCategory> categories = [
-    FoodCategory(FoodType.all, true),
-    FoodCategory(FoodType.main, false),
-    FoodCategory(FoodType.desert, false),
-    // FoodCategory(FoodType.tempura, false),
-    // FoodCategory(FoodType.ramen, false),
-    // FoodCategory(FoodType.burger, false),
   ];
 }
