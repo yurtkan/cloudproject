@@ -24,6 +24,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Checkout",
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+      ),
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Align(
