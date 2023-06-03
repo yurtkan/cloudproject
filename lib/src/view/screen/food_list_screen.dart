@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:badges/badges.dart';
+//import 'package:badges/badges.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:cloudproject_restaurant_app/core/app_data.dart';
-import 'package:cloudproject_restaurant_app/core/app_color.dart';
+//import 'package:cloudproject_restaurant_app/core/app_color.dart';
 import 'package:cloudproject_restaurant_app/core/app_extension.dart';
 //import 'package:cloudproject_restaurant_app/src/model/food_category.dart';
 import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
@@ -24,8 +24,10 @@ class FoodListScreen extends StatelessWidget {
         children: [
           Image.asset(height: 20, 'assets/images/ncatlittle.png'),
           const SizedBox(width: 10),
-          Text("Nyan Cat Asian House",
-              style: Theme.of(context).textTheme.headlineSmall)
+          Text(
+            "Nyan Cat Asian House",
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
         ],
       ),
       actions: [

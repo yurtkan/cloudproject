@@ -155,7 +155,10 @@ class FoodDetailScreen extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: width * 0.1),
                         child: ElevatedButton(
-                          onPressed: () => controller.addToCart(food),
+                          onPressed: () => {
+                            controller.addToCart(food),
+                            Navigator.of(context).pop(),
+                          },
                           child: const Text("Add to cart"),
                         ),
                       ),

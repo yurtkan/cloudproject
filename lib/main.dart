@@ -26,8 +26,10 @@ void main() {
               },
             ),
             theme: controller.theme.value,
-            unknownRoute:
-                GetPage(name: '/notfound', page: () => const NotFoundScreen()),
+            unknownRoute: GetPage(
+              name: '/notfound',
+              page: () => const NotFoundScreen(),
+            ),
             initialRoute: '/login',
             getPages: [
               GetPage(

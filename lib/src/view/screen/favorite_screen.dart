@@ -18,7 +18,7 @@ class FavoriteScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "Favorite screen",
+          "Favorite",
           style: Theme.of(context).textTheme.displayMedium,
         ),
       ),

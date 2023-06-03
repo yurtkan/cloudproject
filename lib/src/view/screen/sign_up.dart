@@ -95,15 +95,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       labelStyle: TextStyle(color: Colors.purple),
                       prefixIcon: Icon(Icons.account_circle),
                       prefixIconColor: Colors.purple,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
                     ),
                   ),
@@ -124,15 +120,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       labelStyle: TextStyle(color: Colors.purple),
                       prefixIcon: Icon(Icons.mail),
                       prefixIconColor: Colors.purple,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
                     ),
                   ),
@@ -169,15 +161,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           });
                         },
                       ),
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 30),
                       ),
                     ),
                   ),
