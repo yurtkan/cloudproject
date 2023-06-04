@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:cloudproject_restaurant_app/src/view/screen/register_screen.dart';
+import 'package:cloudproject_restaurant_app/src/view/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cloudproject_restaurant_app/src/controller/login_controller.dart';
+import 'package:cloudproject_restaurant_app/src/controller/register_controller.dart';
 
 bool _passwordVisible = false;
 
@@ -11,15 +11,15 @@ void initState() {
   _passwordVisible = false;
 }
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final LoginController controller = Get.put(LoginController());
+class _RegisterScreenState extends State<RegisterScreen> {
+  final RegisterController controller = Get.put(RegisterController());
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -89,27 +89,50 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Welcome",
+                            "Register",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color.fromARGB(255, 252, 252, 252),
-                              fontSize: 40,
+                              fontSize: 30,
                               fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "Please Login to Your Account",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 252, 252, 252),
-                              fontSize: 20,
                             ),
                           ),
                           const SizedBox(
                             height: 40,
                           ),
                           TextFormField(
-                            controller: controller.loginfield,
+                            controller: controller.unamefield,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please provide the Name Surname';
+                              }
+                              return null;
+                            },
+                            keyboardType: TextInputType.text,
+                            style: const TextStyle(
+                              color: Colors.purple,
+                              fontSize: 18,
+                            ),
+                            decoration: const InputDecoration(
+                              labelText: "Name Surname",
+                              labelStyle: TextStyle(color: Colors.purple),
+                              prefixIcon: Icon(Icons.person),
+                              prefixIconColor: Colors.purple,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.white, width: 25),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.white, width: 25),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          TextFormField(
+                            controller: controller.registerfield,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please provide the mail';
@@ -137,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(
-                            height: 40,
+                            height: 30,
                           ),
                           TextFormField(
                             controller: controller.passwordfield,
@@ -180,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(
-                            height: 40,
+                            height: 30,
                           ),
                           SizedBox(
                             height: 45,
@@ -201,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  controller.loginAPI();
+                                  controller.registerAPI();
                                 } else {
                                   Get.snackbar('Please fill all the fields',
                                       'Email and Pasword are required',
@@ -209,13 +232,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                       backgroundColor: Colors.red);
                                 }
                               },
-                              child: const Text('Login'),
+                              child: const Text('Sign Up'),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 50, bottom: 10),
+                            padding: const EdgeInsets.only(top: 20, bottom: 10),
                             child: Text(
-                              "Don't have an account?",
+                              "Have an account?",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 252, 252, 252),
                               ),
@@ -223,7 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           SizedBox(
                             height: 45,
-                            width: 250,
+                            width: 200,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 foregroundColor:
@@ -240,13 +263,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               onPressed: () {
-                                Get.offAll(() => const RegisterScreen());
+                                Get.offAll(() => const LoginScreen());
                               },
-                              child: const Text('Sign Up'),
+                              child: const Text('Login'),
                             ),
                           ),
                           SizedBox(
-                            height: 48,
+                            height: 42,
                           ),
                         ],
                       )),

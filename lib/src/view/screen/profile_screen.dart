@@ -1,7 +1,9 @@
+import 'package:cloudproject_restaurant_app/src/view/screen/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:cloudproject_restaurant_app/core/app_color.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../controller/food_controller.dart';
 
 final FoodController controller = Get.put(FoodController());
@@ -17,6 +19,31 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  late String _uname = "Guest"; //User Name
+  late String _mail = "guest@mail.com"; //User Mail
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserInfo();
+  }
+
+  _getUserInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('uname') != null) {
+      _uname = prefs.getString('uname')!;
+    }
+    if (prefs.getString('mail') != null) {
+      _mail = prefs.getString('mail')!;
+    }
+  }
+
+  _logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+    Get.offAll(() => const LoginScreen());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +57,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
-        child: const Padding(
-          padding: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   table_button(
@@ -50,7 +78,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   table_button(
@@ -64,7 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   table_button(
@@ -77,6 +105,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     tableName: "9",
                   ),
                 ],
+              ),
+              // logout button
+              SizedBox(
+                height: 50,
+                width: 200,
+                child: ElevatedButton(
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FaIcon(FontAwesomeIcons.rightFromBracket),
+                      Text("Logout"),
+                      SizedBox(
+                        width: 20,
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    _logout();
+                  },
+                ),
               ),
             ],
           ),

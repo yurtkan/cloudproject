@@ -19,7 +19,7 @@ class FoodListScreen extends StatefulWidget {
 }
 
 class _FoodListScreenState extends State<FoodListScreen> {
-  late String _uname;
+  late String _uname = "Guest";
 
   @override
   void initState() {
