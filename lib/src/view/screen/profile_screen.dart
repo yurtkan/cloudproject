@@ -65,7 +65,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/images/sufle_pp.png",
+                controller.isLightTheme
+                    ? "assets/images/sufle_pp.png"
+                    : "assets/images/misket_pp.png",
                 height: 200,
                 width: 200,
               ),

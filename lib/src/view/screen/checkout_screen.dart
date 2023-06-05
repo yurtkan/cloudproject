@@ -70,17 +70,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  // const Text('Where should we bring your order?',
-                  //     textAlign: TextAlign.left,
-                  //     style: TextStyle(
-                  //       color: Color.fromARGB(255, 0, 0, 0),
-                  //       fontSize: 30,
-                  //     )),
                   const SizedBox(
                     height: 40,
                   ),
                   const Image(
-                    image: AssetImage('assets/images/Kawaii Cats In Box.gif'),
+                    image: AssetImage('assets/images/giphy.gif'),
                     height: 150,
                   ),
                   const SizedBox(
@@ -288,7 +282,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                         controller
                                             .switchBetweenBottomNavigationItems(
                                                 0);
-                                        Get.to(HomeScreen());
+                                        Get.offAll(() => HomeScreen());
                                         list.cartFood.clear();
                                       },
                                     )
