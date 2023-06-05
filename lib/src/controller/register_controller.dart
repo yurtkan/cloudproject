@@ -2,17 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterController extends GetxController {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final registerfield = TextEditingController();
   final passwordfield = TextEditingController();
   final unamefield = TextEditingController();
 
   void registerAPI() async {
-    final SharedPreferences prefs = await _prefs;
     const String APIurl =
         'https://athena.squarefox.org/cloudproject/api/index.php/user/register';
     final bodyRequest = {
@@ -26,9 +24,9 @@ class RegisterController extends GetxController {
       var data = jsonDecode(response.body);
       // print(data.toString());
       if (response.statusCode == 201) {
-        await prefs.setString('uname', unamefield.text.toString());
-        await prefs.setString('mail', registerfield.text.toString());
-        await prefs.setString('token', data['token'].toString());
+        GetStorage().write('uname', unamefield.text.toString());
+        GetStorage().write('mail', registerfield.text.toString());
+        GetStorage().write('token', data['token'].toString());
         registerfield.clear();
         passwordfield.clear();
         unamefield.clear();
