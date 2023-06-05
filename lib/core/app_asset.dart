@@ -15,6 +15,6 @@ class AppAsset {
   static const sushi12 = "assets/images/sushi12.png";
   static const profileImage = "assets/images/profile_pic.png";
   static const githubImage = "assets/images/github_pic.png";
-  static const emptyCart = "assets/images/empty_cart.png";
-  static const emptyFavorite = "assets/images/empty_favorite.png";
+  static const emptyCart = "assets/images/pngegg.png";
+  static const emptyFavorite = "assets/images/pngegg.png";
 }
