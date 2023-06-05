@@ -1,12 +1,7 @@
-//import 'package:cloudproject_restaurant_app/src/view/screen/food_list_screen.dart';
+import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
-//import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
-
-import '../../controller/food_controller.dart';
-
-//import 'home_screen.dart';
 
 final FoodController list = Get.put(FoodController());
 
@@ -253,11 +248,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   ],
                                 );
                               });
-                        }
-                        // else if(){
-                        //   //pswrd or mail is incorrect
-                        // }
-                        else {
+                        } else {
                           //everything is ok
                           showDialog(
                               context: context,
