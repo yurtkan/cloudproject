@@ -3,15 +3,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  //final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final loginfield = TextEditingController();
   final passwordfield = TextEditingController();
 
   void loginAPI() async {
-    final SharedPreferences prefs = await _prefs;
+    //final SharedPreferences prefs = await _prefs;
     const String APIurl =
         'https://athena.squarefox.org/cloudproject/api/index.php/user/login';
     final bodyRequest = {
@@ -24,9 +25,10 @@ class LoginController extends GetxController {
       var data = jsonDecode(response.body);
       // print(data.toString());
       if (response.statusCode == 200) {
-        await prefs.setString('uname', data['uname'].toString());
-        await prefs.setString('mail', data['mail'].toString());
-        await prefs.setString('token', data['token'].toString());
+        GetStorage().write('uname', data['uname'].toString());
+        GetStorage().write('mail', data['mail'].toString());
+        GetStorage().write('token', data['token'].toString());
+
         loginfield.clear();
         passwordfield.clear();
         Get.offNamed('/home');

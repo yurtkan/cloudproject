@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloudproject_restaurant_app/core/app_extension.dart';
 import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
 import 'package:cloudproject_restaurant_app/src/view/widget/food_list_view.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 final FoodController controller = Get.put(FoodController());
 
@@ -27,10 +27,9 @@ class _FoodListScreenState extends State<FoodListScreen> {
     _getUserName();
   }
 
-  _getUserName() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getString('uname') != null) {
-      _uname = prefs.getString('uname')!;
+  void _getUserName() {
+    if (GetStorage().read('uname') != null) {
+      _uname = GetStorage().read('uname');
     } else {
       _uname = "Guest";
     }
@@ -61,6 +60,7 @@ class _FoodListScreenState extends State<FoodListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _getUserName();
     return Scaffold(
       appBar: _appBar(context),
       body: Padding(
