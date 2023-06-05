@@ -35,6 +35,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _logout() async {
+    if (foodcontroller.isLightTheme != true) {
+      foodcontroller.changeTheme();
+    }
     foodcontroller.switchBetweenBottomNavigationItems(0);
     foodcontroller.cartFood.clear();
     GetStorage().erase();
@@ -61,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                controller.isLightTheme
+                foodcontroller.isLightTheme
                     ? "assets/images/sufle_pp.png"
                     : "assets/images/misket_pp.png",
                 height: 200,
