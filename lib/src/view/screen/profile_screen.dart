@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:cloudproject_restaurant_app/core/app_color.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 import '../../controller/food_controller.dart';
 
-final FoodController controller = Get.put(FoodController());
-
-@override
-void initState() {}
+final FoodController foodcontroller = Get.put(FoodController());
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -29,18 +26,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _getUserInfo() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getString('uname') != null) {
-      _uname = prefs.getString('uname')!;
+    if (GetStorage().read('uname') != null) {
+      _uname = GetStorage().read('uname');
     }
-    if (prefs.getString('mail') != null) {
-      _mail = prefs.getString('mail')!;
+    if (GetStorage().read('mail') != null) {
+      _mail = GetStorage().read('mail');
     }
   }
 
   _logout() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.clear();
+    foodcontroller.switchBetweenBottomNavigationItems(0);
+    foodcontroller.cartFood.clear();
+    GetStorage().erase();
     Get.offAll(() => const LoginScreen());
   }
 
@@ -53,7 +50,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
-      // ignore: sized_box_for_whitespace
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
@@ -73,14 +69,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 20,
               ),
               table_button(
-                tableName: "$_uname",
+                tableName: _uname,
               ),
               const SizedBox(
                 width: 20,
                 height: 20,
               ),
               table_button(
-                tableName: "$_mail",
+                tableName: _mail,
               ),
               Spacer(),
               // logout button
