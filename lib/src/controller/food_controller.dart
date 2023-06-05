@@ -61,24 +61,6 @@ class FoodController extends GetxController {
     }
   }
 
-  // filterItemByCategory(FoodCategory category) {
-  //   // for (var element in AppData.categories) {
-  //   //   element.isSelected = false;
-  //   // }
-  //   category.isSelected = true;
-
-  //   if (category.type == FoodType.all) {
-  //     filteredFoods.assignAll(AppData.foodItems.obs);
-  //   } else {
-  //     filteredFoods.assignAll(AppData.foodItems.where((item) {
-  //       return item.type == category.type;
-  //     }).toList());
-  //   }
-  //   update();
-
-  //   filteredFoods.refresh();
-  // }
-
   isFavoriteFood(Food food) {
     food.isFavorite = !food.isFavorite;
     update();

@@ -19,8 +19,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late String _uname = "Guest"; //User Name
-  late String _mail = "guest@mail.com"; //User Mail
+  String _uname = "Guest"; //User Name
+  String _mail = "guest@mail.com"; //User Mail
 
   @override
   void initState() {
@@ -62,64 +62,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  table_button(
-                    tableName: "1",
-                  ),
-                  table_button(
-                    tableName: "2",
-                  ),
-                  table_button(
-                    tableName: "3",
-                  ),
-                ],
+              Image.asset(
+                "assets/images/sufle_pp.png",
+                height: 200,
+                width: 200,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  table_button(
-                    tableName: "4",
-                  ),
-                  table_button(
-                    tableName: "5",
-                  ),
-                  table_button(
-                    tableName: "6",
-                  ),
-                ],
+              const SizedBox(
+                height: 20,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  table_button(
-                    tableName: "7",
-                  ),
-                  table_button(
-                    tableName: "8",
-                  ),
-                  table_button(
-                    tableName: "9",
-                  ),
-                ],
+              table_button(
+                tableName: "$_uname",
               ),
+              const SizedBox(
+                width: 20,
+                height: 20,
+              ),
+              table_button(
+                tableName: "$_mail",
+              ),
+              Spacer(),
               // logout button
               SizedBox(
                 height: 50,
                 width: 200,
                 child: ElevatedButton(
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      FaIcon(FontAwesomeIcons.rightFromBracket),
-                      Text("Logout"),
-                      SizedBox(
-                        width: 20,
-                      ),
-                    ],
+                  child: const Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        FaIcon(FontAwesomeIcons.rightFromBracket),
+                        Text("Logout"),
+                        SizedBox(
+                          width: 20,
+                        ),
+                      ],
+                    ),
                   ),
                   onPressed: () {
                     _logout();
@@ -145,15 +125,14 @@ class table_button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      width: 80,
+      height: 50,
+      width: 200,
       decoration: const BoxDecoration(
-        color: Colors.green,
+        color: Color.fromARGB(255, 180, 95, 128),
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: TextButton(
         style: TextButton.styleFrom(
-          foregroundColor: Colors.white,
           padding: const EdgeInsets.all(16.0),
         ),
         onPressed: null, //rezervasyon yapılacak

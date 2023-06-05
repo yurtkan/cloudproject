@@ -38,7 +38,7 @@ class LoginController extends GetxController {
           backgroundColor: Colors.red,
         );
       } else {
-        Get.snackbar('Login Failled', 'maybe a Server trouble',
+        Get.snackbar('Login Failed', 'maybe a Server trouble',
             colorText: Colors.white, backgroundColor: Colors.red);
       }
     } catch (e) {

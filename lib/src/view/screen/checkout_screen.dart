@@ -4,7 +4,11 @@ import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
 //import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
 
+import '../../controller/food_controller.dart';
+
 //import 'home_screen.dart';
+
+final FoodController list = Get.put(FoodController());
 
 final _cityController = TextEditingController();
 final _townController = TextEditingController();
@@ -281,7 +285,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                         style: TextStyle(color: Colors.purple),
                                       ),
                                       onPressed: () {
+                                        controller
+                                            .switchBetweenBottomNavigationItems(
+                                                0);
                                         Get.to(HomeScreen());
+                                        list.cartFood.clear();
                                       },
                                     )
                                   ],
