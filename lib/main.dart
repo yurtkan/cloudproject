@@ -7,14 +7,16 @@ import 'dart:ui' show PointerDeviceKind;
 import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
 import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 final FoodController controller = Get.put(FoodController());
 void main() async {
   String sroute;
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String? token = prefs.getString('token');
-
+  //String? token = prefs.getString('token');
+  String? token = GetStorage().read('token');
   if (token == null) {
     sroute = '/login';
   } else {
