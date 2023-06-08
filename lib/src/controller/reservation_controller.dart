@@ -28,6 +28,7 @@ class ReservationController extends GetxController {
               item['status'],
               item['timeStart'],
               item['timeEnd'],
+              item['date'],
             ),
           );
         }

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:cloudproject_restaurant_app/core/app_color.dart';
 
 final FoodController controller = Get.put(FoodController());
+
 final ReservationController reservationController =
     Get.put(ReservationController());
 
@@ -228,7 +229,9 @@ class table_button extends StatelessWidget {
           foregroundColor: Colors.white,
           padding: const EdgeInsets.all(16.0),
         ),
-        onPressed: null, //rezervasyon yapılacak
+        onPressed: () {
+          // reservationController.getReservationItems()[];
+        }, //rezervasyon yapılacak
         child: Text(
           tableName,
           style: const TextStyle(color: Colors.white),
