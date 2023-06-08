@@ -1,20 +1,27 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:cloudproject_restaurant_app/core/app_data.dart';
+//import 'package:cloudproject_restaurant_app/core/app_data.dart';
 import 'package:cloudproject_restaurant_app/core/app_theme.dart';
 import 'package:cloudproject_restaurant_app/src/model/food.dart';
 import 'package:cloudproject_restaurant_app/core/app_extension.dart';
+import 'package:cloudproject_restaurant_app/src/controller/order_menu_controller.dart';
+
+final OrderMenuController orderMenuController = Get.put(OrderMenuController());
 
 class FoodController extends GetxController {
   RxInt currentBottomNavItemIndex = 0.obs;
   RxList<Food> cartFood = <Food>[].obs;
   RxList<Food> favoriteFood = <Food>[].obs;
   // RxList<FoodCategory> categories = AppData.categories.obs;
-  RxList<Food> filteredFoods = AppData.foodItems.obs;
+  RxList<Food> filteredFoods = orderMenuController.getFoodItems().obs;
   RxDouble totalPrice = 0.0.obs;
   RxDouble subtotalPrice = 0.0.obs;
   Rx<ThemeData> theme = AppTheme.lightTheme.obs;
   bool isLightTheme = true;
+
+  void updateFilteredFoods() {
+    filteredFoods.value = orderMenuController.getFoodItems().obs;
+  }
 
   void switchBetweenBottomNavigationItems(int currentIndex) {
     currentBottomNavItemIndex.value = currentIndex;
@@ -42,14 +49,14 @@ class FoodController extends GetxController {
   }
 
   calculateTotalPrice() {
-    totalPrice.value = 5;
+    totalPrice.value = 0;
     for (var element in cartFood) {
       totalPrice.value += element.quantity * element.price;
     }
 
-    subtotalPrice.value = 0;
+    subtotalPrice.value = totalPrice.value;
     if (totalPrice.value > 0) {
-      subtotalPrice.value = totalPrice.value - 5;
+      totalPrice.value += (totalPrice.value * 18) / 100;
     }
   }
 

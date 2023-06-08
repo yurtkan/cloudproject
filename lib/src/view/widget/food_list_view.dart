@@ -57,7 +57,8 @@ class FoodListView extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset(food.image, scale: 6),
+                          //Image.asset(food.image, scale: 6),
+                          Image.network(food.image, scale: 6),
                         ],
                       ).fadeAnimation(0.7),
                       Column(

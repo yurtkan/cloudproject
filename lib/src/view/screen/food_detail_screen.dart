@@ -27,12 +27,6 @@ class FoodDetailScreen extends StatelessWidget {
         onPressed: () => Navigator.pop(context),
         icon: const Icon(Icons.arrow_back),
       ),
-      // actions: [
-      //   IconButton(
-      //     onPressed: () {},
-      //     icon: const Icon(Icons.more_vert),
-      //   )
-      // ],
     );
   }
 
@@ -139,7 +133,7 @@ class FoodDetailScreen extends StatelessWidget {
         ),
       ),
       body: ScaleAnimation(
-        child: Center(child: Image.asset(food.image, scale: 2)),
+        child: Center(child: Image.network(food.image, scale: 2)),
       ),
     );
   }

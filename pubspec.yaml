@@ -41,6 +41,7 @@ dependencies:
   http: ^1.0.0
   get: ^4.6.5
   get_storage: ^2.1.1
+  connectivity_plus: ^4.0.1
 
 dev_dependencies:
   flutter_native_splash: ^2.2.19

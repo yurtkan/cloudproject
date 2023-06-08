@@ -1,21 +1,10 @@
-//import 'package:cloudproject_restaurant_app/src/view/screen/food_list_screen.dart';
+import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
+import 'package:cloudproject_restaurant_app/src/controller/order_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:cloudproject_restaurant_app/src/view/screen/home_screen.dart';
-//import 'package:cloudproject_restaurant_app/src/view/screen/sign_up.dart';
 import 'package:get/get.dart';
 
-import '../../controller/food_controller.dart';
-
-//import 'home_screen.dart';
-
-final FoodController list = Get.put(FoodController());
-
-final _cityController = TextEditingController();
-final _townController = TextEditingController();
-final _addressController = TextEditingController();
-
-@override
-void initState() {}
+final OrderController orderController = Get.put(OrderController());
+final FoodController foodController = Get.put(FoodController());
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -27,137 +16,103 @@ class CheckoutScreen extends StatefulWidget {
 class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Checkout",
-          style: Theme.of(context).textTheme.titleLarge,
+          style: TextStyle(
+            color: foodController.isLightTheme ? Colors.black : Colors.white,
+          ),
         ),
       ),
-      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                //end: Alignment.bottomRight,
-                colors: [
-                  Color.fromARGB(255, 244, 236, 245),
-                  Color.fromARGB(255, 188, 178, 194),
-                  Color.fromARGB(255, 200, 171, 204),
-                  Color.fromARGB(255, 215, 187, 223),
-                  Color.fromARGB(255, 207, 181, 219),
-                  Color.fromARGB(255, 220, 199, 221),
-                ],
-              ),
-              // borderRadius: BorderRadius.only(
-              //   topLeft: Radius.circular(40),
-              //   topRight: Radius.circular(40),
-              // ),
+        child: Container(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 50.0,
+              left: 20.0,
+              right: 20.0,
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 20.0,
-                left: 20.0,
-                right: 20.0,
-              ),
+            child: Form(
+              key: _formKey,
               child: Column(
-                children: <Widget>[
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
                   const Image(
                     image: AssetImage('assets/images/giphy.gif'),
                     height: 150,
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 20,
+                  ),
+                  Text(
+                    "Where we should bring your order?",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  const SizedBox(
+                    height: 40,
                   ),
                   TextFormField(
-                    controller: _cityController,
-                    onChanged: (text) {
-                      setState(() {
-                        _cityController.text;
-                      });
+                    controller: orderController.cityfield,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please provide city information';
+                      }
+                      return null;
                     },
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: Colors.purple),
+                    style: const TextStyle(
+                      color: Colors.purple,
+                      fontSize: 18,
+                    ),
                     decoration: const InputDecoration(
                       labelText: "City",
                       labelStyle: TextStyle(color: Colors.purple),
-                      // prefixIcon: Icon(Icons.home_filled),
-                      // prefixIconColor: Colors.purple,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                      ),
+                      prefixIcon: Icon(Icons.location_city),
+                      prefixIconColor: Colors.purple,
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   TextFormField(
-                    controller: _townController,
-                    onChanged: (text) {
-                      setState(() {
-                        _cityController.text;
-                      });
+                    controller: orderController.townfield,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please provide town information';
+                      }
+                      return null;
                     },
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: Colors.purple),
+                    style: const TextStyle(color: Colors.purple, fontSize: 18),
                     decoration: const InputDecoration(
                       labelText: "Town",
                       labelStyle: TextStyle(color: Colors.purple),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.purple,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                      ),
+                      prefixIcon: Icon(Icons.domain),
+                      prefixIconColor: Colors.purple,
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   TextFormField(
-                    controller: _addressController,
-                    onChanged: (text) {
-                      setState(() {
-                        _addressController.text;
-                      });
+                    controller: orderController.adressfield,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please provide adress information';
+                      }
+                      return null;
                     },
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: Colors.purple),
+                    style: const TextStyle(color: Colors.purple, fontSize: 18),
                     decoration: const InputDecoration(
-                      labelText: "Address",
+                      labelText: "Adress",
                       labelStyle: TextStyle(color: Colors.purple),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.purple,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                      ),
+                      prefixIcon: Icon(Icons.pin_drop),
+                      prefixIconColor: Colors.purple,
                     ),
                   ),
                   const SizedBox(
@@ -165,11 +120,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                   SizedBox(
                     height: 45,
-                    width: 150,
+                    width: 250,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        foregroundColor:
-                            const Color.fromARGB(255, 101, 101, 101),
+                        foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                         backgroundColor:
                             const Color.fromARGB(255, 239, 239, 239),
                         shape: const RoundedRectangleBorder(
@@ -182,113 +136,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         ),
                       ),
                       onPressed: () {
-                        if (_cityController.text.isEmpty) {
-                          //city field is empty
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text(
-                                    "City info cannot be empty",
-                                    style: TextStyle(color: Colors.deepPurple),
-                                  ),
-                                  backgroundColor: Colors.white,
-                                  actions: <Widget>[
-                                    TextButton(
-                                      child: const Text(
-                                        "Okay",
-                                        style: TextStyle(color: Colors.purple),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    )
-                                  ],
-                                );
-                              });
-                        } else if (_townController.text.isEmpty) {
-                          //pswrd is empty
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text(
-                                    "Town info cannot be empty",
-                                    style: TextStyle(color: Colors.deepPurple),
-                                  ),
-                                  backgroundColor: Colors.white,
-                                  actions: <Widget>[
-                                    TextButton(
-                                      child: const Text(
-                                        "Okay",
-                                        style: TextStyle(color: Colors.purple),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    )
-                                  ],
-                                );
-                              });
-                        } else if (_addressController.text.isEmpty) {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text(
-                                    "Address info cannot be empty",
-                                    style: TextStyle(color: Colors.deepPurple),
-                                  ),
-                                  backgroundColor: Colors.white,
-                                  actions: <Widget>[
-                                    TextButton(
-                                      child: const Text(
-                                        "Okay",
-                                        style: TextStyle(color: Colors.purple),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    )
-                                  ],
-                                );
-                              });
-                        }
-                        // else if(){
-                        //   //pswrd or mail is incorrect
-                        // }
-                        else {
-                          //everything is ok
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text(
-                                    "Your order is confirmed!",
-                                    style: TextStyle(color: Colors.purple),
-                                  ),
-                                  content: const Text(
-                                    "We sent you a confirmation e-mail.",
-                                    style: TextStyle(color: Colors.purple),
-                                  ),
-                                  backgroundColor: Colors.white,
-                                  actions: <Widget>[
-                                    TextButton(
-                                      child: const Text(
-                                        "Okay",
-                                        style: TextStyle(color: Colors.purple),
-                                      ),
-                                      onPressed: () {
-                                        controller
-                                            .switchBetweenBottomNavigationItems(
-                                                0);
-                                        Get.offAll(() => HomeScreen());
-                                        list.cartFood.clear();
-                                      },
-                                    )
-                                  ],
-                                );
-                              });
+                        if (_formKey.currentState!.validate()) {
+                          _setorders();
+                        } else {
+                          Get.snackbar('Please fill all the fields',
+                              'Adress Infotmations is required',
+                              colorText: Colors.white,
+                              backgroundColor: Colors.red);
                         }
                       },
                       child: const Text('Order'),
@@ -301,5 +155,20 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ),
       ),
     );
+  }
+
+  void _setorders() {
+    Map<String, int> carti = {};
+    for (int i = 0; i < foodController.cartFood.length; i++) {
+      String keyid = '"${foodController.cartFood[i].dbid}"';
+      int valueid = foodController.cartFood[i].quantity;
+      carti.addAll(
+        {
+          keyid: valueid,
+        },
+      );
+    }
+    orderController.orderAPI(carti);
+    print(carti);
   }
 }
