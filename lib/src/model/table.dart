@@ -1,10 +1,10 @@
-class Table_Res {
+class TableRes {
   int id;
   String status;
   String start;
-  double end;
+  String end;
 
-  Table_Res(
+  TableRes(
     this.id,
     this.status,
     this.start,

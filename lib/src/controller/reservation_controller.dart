@@ -12,8 +12,8 @@ class ReservationController extends GetxController {
   // }
 
   String? fetchReservation;
-  List<Table_Res> tableItems = [];
-  List<Table_Res> getReservationItems() {
+  List<TableRes> tableItems = [];
+  List<TableRes> getReservationItems() {
     tableAPI();
 
     if (fetchReservation != null) {
@@ -23,7 +23,7 @@ class ReservationController extends GetxController {
         bool tableExists = tableItems.any((table) => table.id == item['id']);
         if (!tableExists) {
           tableItems.add(
-            Table_Res(
+            TableRes(
               item['id'],
               item['status'],
               item['timeStart'],
@@ -35,32 +35,6 @@ class ReservationController extends GetxController {
     }
     return tableItems;
   }
-  // List<Food> getFoodItems() {
-  //   menuAPI();
-  //   if (fetchMenu == null) {
-  //     _getMenu();
-  //     //print("Menu fetched from local storage");
-  //   } else {
-  //     //print("Menu fetched from API");
-  //   }
-  //   if (fetchMenu != null) {
-  //     var menu = jsonDecode(fetchMenu!);
-  //     for (var item in menu) {
-  //       foodItems.add(
-  //         Food(
-  //           item['id'],
-  //           ("https://athena.squarefox.org/cloudproject/images/${item['photo']}"),
-  //           item['foodname'],
-  //           item['price'].toDouble(),
-  //           1,
-  //           false,
-  //           item['fooddesc'],
-  //         ),
-  //       );
-  //     }
-  //   }
-  //   return foodItems;
-  // }
 
   void tableAPI() async {
     const String APIurl =
