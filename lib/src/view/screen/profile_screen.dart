@@ -2,7 +2,7 @@ import 'package:cloudproject_restaurant_app/src/view/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:cloudproject_restaurant_app/core/app_color.dart';
+//import 'package:cloudproject_restaurant_app/core/app_color.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../controller/food_controller.dart';
 
