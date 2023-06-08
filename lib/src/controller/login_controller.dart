@@ -1,9 +1,13 @@
 import 'dart:convert';
 
+import 'package:cloudproject_restaurant_app/src/controller/food_controller.dart';
+import 'package:cloudproject_restaurant_app/src/controller/order_menu_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_storage/get_storage.dart';
+
+final OrderMenuController orderMenuController = Get.put(OrderMenuController());
 
 class LoginController extends GetxController {
   final loginfield = TextEditingController();
@@ -24,9 +28,11 @@ class LoginController extends GetxController {
         GetStorage().write('uname', data['uname'].toString());
         GetStorage().write('mail', data['mail'].toString());
         GetStorage().write('token', data['token'].toString());
-
         loginfield.clear();
         passwordfield.clear();
+        orderMenuController.menuAPI();
+        orderMenuController.getFoodItems();
+        Get.find<FoodController>().updateFilteredFoods();
         Get.offNamed('/home');
       } else if (response.statusCode == 401) {
         Get.snackbar(

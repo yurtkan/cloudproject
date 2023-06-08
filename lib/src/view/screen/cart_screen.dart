@@ -65,11 +65,13 @@ class CartScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Taxes",
+                          "Taxes (%18)",
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
                         Text(
-                          "\$${5.00}",
+                          controller.totalPrice.value == 0.0
+                              ? "\$0.0"
+                              : "\$${(controller.subtotalPrice * 18) / 100}",
                           style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ],
@@ -90,7 +92,7 @@ class CartScreen extends StatelessWidget {
                         ),
                         Obx(() {
                           return Text(
-                            controller.totalPrice.value == 5.0
+                            controller.totalPrice.value == 0.0
                                 ? "\$0.0"
                                 : "\$${controller.totalPrice}",
                             style: h2Style.copyWith(
@@ -132,7 +134,8 @@ class CartScreen extends StatelessWidget {
       itemBuilder: (_, index) {
         return Dismissible(
           onDismissed: (direction) {
-            if (direction == DismissDirection.startToEnd) {
+            if (direction == DismissDirection.startToEnd ||
+                direction == DismissDirection.endToStart) {
               controller.removeCartItemAtSpecificIndex(index);
             }
           },
@@ -164,7 +167,7 @@ class CartScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const SizedBox(width: 20),
-                Image.asset(controller.cartFood[index].image, scale: 10),
+                Image.network(controller.cartFood[index].image, scale: 10),
                 const SizedBox(width: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

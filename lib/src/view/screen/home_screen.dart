@@ -1,3 +1,4 @@
+import 'package:cloudproject_restaurant_app/src/controller/order_menu_controller.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/reservation_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:cloudproject_restaurant_app/src/view/widget/page_transition.dart
 import 'package:cloudproject_restaurant_app/src/view/screen/food_list_screen.dart';
 
 final FoodController controller = Get.put(FoodController());
+final OrderMenuController orderMenuController = Get.put(OrderMenuController());
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);

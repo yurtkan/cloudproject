@@ -43,7 +43,7 @@ class FavoriteScreen extends StatelessWidget {
                   food.name,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                leading: Image.asset(food.image),
+                leading: Image.network(food.image),
                 subtitle: Text(
                   food.description,
                   overflow: TextOverflow.ellipsis,
