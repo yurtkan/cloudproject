@@ -1,4 +1,5 @@
 import 'package:cloudproject_restaurant_app/src/controller/order_menu_controller.dart';
+import 'package:cloudproject_restaurant_app/src/controller/reservation_controller.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/reservation_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ import 'package:cloudproject_restaurant_app/src/view/screen/food_list_screen.dar
 
 final FoodController controller = Get.put(FoodController());
 final OrderMenuController orderMenuController = Get.put(OrderMenuController());
+final ReservationController reservationController =
+    Get.put(ReservationController());
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -26,6 +29,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    reservationController.getReservationItems();
     return Scaffold(
       body: Obx(
         () => PageTransition(
