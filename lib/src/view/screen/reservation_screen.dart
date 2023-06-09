@@ -20,6 +20,12 @@ class ReservationScreen extends StatefulWidget {
 }
 
 class _ReservationScreenState extends State<ReservationScreen> {
+  @override
+  void initState() {
+    super.initState();
+    tableItems = reservationController.getReservationItems();
+  }
+
   var ttabletemp = reservationController.getReservationItems();
   @override
   Widget build(BuildContext context) {
@@ -306,9 +312,10 @@ class table_button extends StatelessWidget {
                     } else {
                       timefinish = timeend.value.format(context);
                     }
-
+                    print(timestart);
+                    print(timefinish);
                     reservationController.updateReservationStatus(
-                      tableItems[tableId].id,
+                      tableItems[tableId].id.toString(),
                       "Occupied",
                       timestart,
                       timefinish,
