@@ -284,16 +284,28 @@ class table_button extends StatelessWidget {
                   textCancel: "Cancel",
                   confirmTextColor: Colors.white,
                   onConfirm: () {
-                    final timestart = DateFormat("HH:mm").format(
-                      DateFormat("hh:mm a").parse(
-                        time.value.format(context),
-                      ),
-                    );
-                    final timefinish = DateFormat("HH:mm").format(
-                      DateFormat("hh:mm a").parse(
-                        timeend.value.format(context),
-                      ),
-                    );
+                    final timestart;
+                    final timefinish;
+                    if (time.value.format(context).endsWith("PM") ||
+                        time.value.format(context).endsWith("AM")) {
+                      timestart = DateFormat("HH:mm").format(
+                        DateFormat("hh:mm a").parse(
+                          time.value.format(context),
+                        ),
+                      );
+                    } else {
+                      timestart = time.value.format(context);
+                    }
+                    if (timeend.value.format(context).endsWith("PM") ||
+                        timeend.value.format(context).endsWith("AM")) {
+                      timefinish = DateFormat("HH:mm").format(
+                        DateFormat("hh:mm a").parse(
+                          timeend.value.format(context),
+                        ),
+                      );
+                    } else {
+                      timefinish = timeend.value.format(context);
+                    }
 
                     reservationController.updateReservationStatus(
                       tableItems[tableId].id,
