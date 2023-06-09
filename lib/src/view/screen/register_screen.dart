@@ -36,7 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     SizedBox(
                       height: 150,
-                      width: 200,
+                      width: 180,
                       child: const Image(
                         image: AssetImage('assets/images/icegif-379.gif'),
                         fit: BoxFit.cover,

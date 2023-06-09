@@ -1,4 +1,5 @@
 import 'package:cloudproject_restaurant_app/src/controller/order_menu_controller.dart';
+import 'package:cloudproject_restaurant_app/src/controller/reservation_controller.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/login_screen.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/not_connected.dart';
 import 'package:cloudproject_restaurant_app/src/view/screen/notfound_screen.dart';
@@ -12,6 +13,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 final OrderMenuController orderMenuController = Get.put(OrderMenuController());
+final ReservationController reservationController =
+    Get.put(ReservationController());
 final FoodController controller = Get.put(FoodController());
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
