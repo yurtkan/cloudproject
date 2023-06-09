@@ -69,18 +69,18 @@ class ReservationController extends GetxController {
   }
 
   void updateReservationStatus(
-      int tid, String tstatus, String tstart, String tend) async {
+      String tid, String tstatus, String tstart, String tend) async {
     _getToken();
     const String APIurl =
         'https://athena.squarefox.org/cloudproject/api/index.php/reservation/confirm';
     final bodyRequest = {
       'token': token,
-      'id': tid.toString(),
+      'id': tid,
       'status': tstatus,
-      'timeStart': tstart,
-      'timeEnd': tend,
+      'timeStart': '$tstart:00',
+      'timeEnd': '$tend:00',
     };
-
+    print(bodyRequest);
     try {
       final response = await http.post(Uri.parse(APIurl), body: bodyRequest);
       var data = response.body; //response.body);
